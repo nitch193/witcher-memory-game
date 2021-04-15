@@ -43,6 +43,7 @@
   align-items: center;
   width: 240px;
   height: 280px;
+  border-radius: 32px;
 }
 
 .character {
@@ -50,6 +51,7 @@
   height: 95%;
 }
 .card h5 {
+  font-size: 1rem;
   text-align: center;
   width: 100%;
   background-color: white;
