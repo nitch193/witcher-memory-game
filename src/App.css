@@ -14,11 +14,22 @@
   background-size: cover;
   display: flex;
   justify-content: center;
+  background-color: #15151534;
+  background-blend-mode: multiply;
+}
+.nav div {
+  text-align: center;
+}
+.nav p {
+  position: absolute;
+  bottom: 0;
+  margin: auto 0;
 }
 .score {
-  position: absolute;
+  position: fixed;
   top: 50px;
   right: 10px;
+  color: white;
 }
 
 .cards {
@@ -38,6 +49,7 @@
   background-position: center;
 }
 .card {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;

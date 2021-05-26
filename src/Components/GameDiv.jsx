@@ -15,7 +15,9 @@ import visenna from "../Images/visenna.png";
 import yen from "../Images/yen.jpg";
 import vilgefortz from "../Images/vilgefortz.png";
 const GameDiv = () => {
-  const [cards, setcards] = useState([
+  const [score, setscore] = useState(0);
+  const [highScore, sethighScore] = useState(0);
+  const initialState = [
     {
       image: sylvan,
       name: "Torque the Sylvan",
@@ -91,7 +93,8 @@ const GameDiv = () => {
       name: "Yennefer of Vengerberg",
       clicked: false,
     },
-  ]);
+  ];
+  const [cards, setcards] = useState(initialState);
   const randomArray = (cards) => {
     const newCards = cards.map((card) => card);
     for (let i = newCards.length - 1; i > 0; i--) {
@@ -103,16 +106,28 @@ const GameDiv = () => {
 
   const handleClick = (e) => {
     for (let i = 0; i < cards.length; i++) {
-      if (cards[i].name === e.target.alt) cards[i].clicked = !cards[i].clicked;
+      if (cards[i].name === e.target.alt) {
+        if (!cards[i].clicked) {
+          setscore(score + 1);
+          cards[i].clicked = !cards[i].clicked;
+        } else {
+          if (score > highScore) sethighScore(score);
+          setscore(0);
+          const initial = cards.map((card) => (card.clicked = false));
+          setcards(initial);
+        }
+      }
     }
     randomArray(cards);
   };
-  useEffect(() => {
-    console.log(cards);
-  }, [cards]);
+  useEffect(() => {}, [cards]);
 
   return (
     <div className="game">
+      <div className="score">
+        <h4>Score : {score}</h4>
+        <h4>Highest- Score : {highScore}</h4>
+      </div>
       <div
         className="cards"
         style={{ backgroundImage: `url(./background.jpg)` }}
