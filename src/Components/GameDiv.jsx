@@ -123,15 +123,12 @@ const GameDiv = () => {
   useEffect(() => {}, [cards]);
 
   return (
-    <div className="game">
+    <div className="game" style={{ backgroundImage: `url(./background.jpg)` }}>
       <div className="score">
         <h4>Score : {score}</h4>
         <h4>Highest- Score : {highScore}</h4>
       </div>
-      <div
-        className="cards"
-        style={{ backgroundImage: `url(./background.jpg)` }}
-      >
+      <div className="cards">
         {cards.map((img) => (
           <div key={img.name} className="card">
             <img
